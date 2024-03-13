@@ -34,8 +34,6 @@ public class Main {
         if (answer == 'y'){
             System.out.println("Creating task...");
             Task task1 = user.createTask();
-            task1.start_time = 18.00;
-            task1.finish_time = 19.30;
             DecimalFormat df = new DecimalFormat("##.00");
             System.out.println(task1.name + " duration: " + df.format(task1.getDuration()));
         }

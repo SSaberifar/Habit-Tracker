@@ -13,7 +13,6 @@ public class User {
     public Task createTask(){
         String task = scanner.next();
         Task Taskobj = new Task(task);
-
         return Taskobj;
     }
 
