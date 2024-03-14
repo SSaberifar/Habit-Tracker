@@ -31,7 +31,8 @@ public class Task {
         this.user = Use;
     }
     private void setColor(String C){
-        color = C;
+        if( isColorValid(C) )
+            color = C;
     }
     private String getColor(){
         return this.color;
@@ -55,6 +56,6 @@ public class Task {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 }
