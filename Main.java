@@ -2,13 +2,8 @@ import TaskPackage.Task;
 import UserPackage.User;
 import java.text.DecimalFormat;
 import java.util.Scanner;
-
-
-//sorosh saberifar 4022262159
-//amirali fadishei 4022262171
-
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         // Taking user input and creating a user
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter your username: ");
@@ -31,9 +26,18 @@ public class Main {
         // Creating task for a specific user
         System.out.println("Would you like to create a task? (y/n)");
         char answer = scan.next().charAt(0);
-        if (answer == 'y'){
+        if (answer == 'y') {
             System.out.println("Creating task...");
-            Task task1 = user.createTask();
+            System.out.println("Enter your taskname: ");
+            String task_name = scan.next();
+            System.out.println("Enter your user: ");
+            System.out.println("Enter your start time: ");
+            double start_time = scan.nextDouble();
+            System.out.println("Enter your finish time: ");
+            double finish_time = scan.nextDouble();
+            System.out.println("Enter your color: ");
+            String color = scan.next();
+            Task task1 = user.createTask(task_name, null, start_time, finish_time, color);
             DecimalFormat df = new DecimalFormat("##.00");
             System.out.println(task1.name + " duration: " + df.format(task1.getDuration()));
         }
@@ -41,7 +45,7 @@ public class Main {
         // Changing username and password with setter methods
         System.out.println("Would you like to change your username and password? (y/n)");
         answer = scan.next().charAt(0);
-        if (answer == 'y'){
+        if (answer == 'y') {
             System.out.println("Changing username and password...");
             System.out.println("Enter new username: ");
             String username2 = scan.next();
@@ -50,7 +54,7 @@ public class Main {
             String password2 = scan.next();
             user.setPassword(password2);
             // Changing the streak
-            user.streak = 2;
+            user.Streak = 2;
             printUserInfo(user);
         }
 
@@ -58,8 +62,8 @@ public class Main {
         scan.close();
     }
 
-    public static void printUserInfo(User user){
-        System.out.println("Username: " + user.getUsername() + "\nFull name: " + user.getFullName()
-                + "\nPassword: " + user.getPassword() + "\nEmail: " + user.email + "\nYou have been using the app for " + user.streak + " days.");
+    public static void printUserInfo(User user) {
+        System.out.println("Username: " + user.getUsername() + "\nFull name: " + user.getFullName() +
+                "\nPassword: " + user.getPassword() + "\nEmail: " + user.Email + "\nYou have been using the app for " + user.Streak + " days.");
     }
 }
