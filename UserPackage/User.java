@@ -38,6 +38,7 @@ public class User {
         if (Utils.isPasswordValid(password)) {
             this.Password = password;
         }
+
     }
     public String getPassword() {
         return this.Password;
@@ -94,7 +95,7 @@ public class User {
             }
             else{
                 System.out.println("please enter valid email!");
-                setLastName(scanner.next());
+                setEmail(scanner.next());
             }
         }
     }
