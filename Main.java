@@ -10,8 +10,9 @@ public class Main {
         String username = scan.next();
         System.out.println("Enter your password: ");
         String password = scan.next();
-        System.out.println("Enter your full name: ");
+        System.out.println("Enter your first name: ");
         String first_name = scan.next();
+        System.out.println("Enter your last name: ");
         String last_name = scan.next();
         System.out.println("Enter your email: ");
         String email = scan.next();
@@ -64,6 +65,6 @@ public class Main {
 
     public static void printUserInfo(User user) {
         System.out.println("Username: " + user.getUsername() + "\nFull name: " + user.getFullName() +
-                "\nPassword: " + user.getPassword() + "\nEmail: " + user.Email + "\nYou have been using the app for " + user.Streak + " days.");
+                "\nPassword: " + user.getPassword() + "\nEmail: " + user.getEmail() + "\nYou have been using the app for " + user.Streak + " days.");
     }
 }

@@ -13,9 +13,9 @@ public class User {
     Scanner scanner = new Scanner(System.in);
     private String Username;
     private String Password;
-    public String first_name;
-    public String last_name;
-    public String Email;
+    private String first_name;
+    private String last_name;
+    private String Email;
     public int Streak;
     static ArrayList < Task > task_list = new ArrayList < > ();
 
@@ -58,9 +58,9 @@ public class User {
             setFirstName(scanner.next());
         } else {
             char[] c = fn.toCharArray();
-            c[0] = Character.toLowerCase(c[0]);
+            c[0] = Character.toUpperCase(c[0]);
             for(int t=1;t<c.length;t++){
-                c[t] = Character.toUpperCase(c[t]);
+                c[t] = Character.toLowerCase(c[t]);
             }
             this.first_name = Arrays.toString(c);
         }
@@ -113,7 +113,7 @@ public class User {
     }
     public Task getTaskByColor(String taskColor){
         for(Task task:task_list){
-            if(taskColor.equals(task.getName())){
+            if(taskColor.equals(task.getColor())){
                 return task;
             }
         }
