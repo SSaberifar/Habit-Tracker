@@ -49,18 +49,29 @@ public class Task {
         if (isColorValid(C))
             color = C;
     }
+    private void setName(String taskName){
+        if(taskName.length()<=10){
+            this.name = taskName;
+        }else{
+            System.out.println("please enter valid name!");
+            setName(scan.next());
+        }
+    }
+    public String getName(){
+        return this.name;
+    }
     public String getColor() {
         return this.color;
     }
     public Task(String task, User u, double S, double F, String Color) {
-        this.name = task;
+        this.setName(task);
         this.setUser(u);
         this.setFinishTime(F);
         this.setStartTime(S);
         this.setColor(Color);
     }
     public Task(String task, User u, double S, double F) {
-        this.name = task;
+        this.setName(task);
         this.setUser(u);
         this.setFinishTime(F);
         this.setStartTime(S);

@@ -1,4 +1,7 @@
 package UtilityPackage;
+
+import java.util.regex.Pattern;
+
 public class Utils {
     public static boolean isPasswordValid(String password) {
         boolean haschar = false;
@@ -11,5 +14,12 @@ public class Utils {
             }
         }
         return hasdigit && haschar;
+    }
+    public static boolean isEmailValid(String email){
+        if(Pattern.matches("[^@ \\t\\r\\n]+@[^@ \\t\\r\\n]+\\.[^@ \\t\\r\\n]+",email)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -1,6 +1,9 @@
 package UserPackage;
 import TaskPackage.Task;
 import UtilityPackage.Utils;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class User {
@@ -29,7 +32,7 @@ public class User {
         }
     }
     public String getFullName() {
-        return this.first_name + " " + this.last_name;
+        return this.first_name.concat(" ".concat(this.last_name));
     }
     public void setPassword(String password) {
         if (Utils.isPasswordValid(password)) {
@@ -54,7 +57,12 @@ public class User {
             System.out.println(" first name can't be empty!");
             setFirstName(scanner.next());
         } else {
-            this.first_name = fn;
+            char[] c = fn.toCharArray();
+            c[0] = Character.toLowerCase(c[0]);
+            for(int t=1;t<c.length;t++){
+                c[t] = Character.toUpperCase(c[t]);
+            }
+            this.first_name = Arrays.toString(c);
         }
     }
     public String getFirstName() {
@@ -62,10 +70,15 @@ public class User {
     }
     public void setLastName(String ln) {
         if (ln == null) {
-            System.out.println(" Last name can't be empty!");
-            setLastName(scanner.next());
+            System.out.println(" last name can't be empty!");
+            setFirstName(scanner.next());
         } else {
-            this.last_name = ln;
+            char[] c = ln.toCharArray();
+            c[0] = Character.toLowerCase(c[0]);
+            for(int t=1;t<c.length;t++){
+                c[t] = Character.toUpperCase(c[t]);
+            }
+            this.last_name = Arrays.toString(c);
         }
     }
     public String getLastName() {
@@ -76,11 +89,36 @@ public class User {
             System.out.println(" Email can't be empty!");
             setLastName(scanner.next());
         } else {
-            this.Email = e;
+            if(Utils.isEmailValid(e)){
+                this.Email = e;
+            }
+            else{
+                System.out.println("please enter valid email!");
+                setLastName(scanner.next());
+            }
         }
     }
     public String getEmail() {
         return this.Email;
+    }
+
+    public Task getTaskByName(String taskName){
+        for(Task task:task_list){
+            if(taskName.equals(task.getName())){
+                return task;
+            }
+        }
+        System.out.println("Can not found task");
+        return null;
+    }
+    public Task getTaskByColor(String taskColor){
+        for(Task task:task_list){
+            if(taskColor.equals(task.getName())){
+                return task;
+            }
+        }
+        System.out.println("Can not found task");
+        return null;
     }
 
     // Constructor
