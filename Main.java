@@ -2,6 +2,7 @@ import TaskPackage.Task;
 import UserPackage.User;
 import java.text.DecimalFormat;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         // Taking user input and creating a user
@@ -38,7 +39,7 @@ public class Main {
             double finish_time = scan.nextDouble();
             System.out.println("Enter your color: ");
             String color = scan.next();
-            Task task1 = user.createTask(task_name, null, start_time, finish_time, color);
+            Task task1 = user.createTask(task_name, user, start_time, finish_time, color);
             DecimalFormat df = new DecimalFormat("##.00");
             System.out.println(task1.name + " duration: " + df.format(task1.getDuration()));
         }

@@ -1,12 +1,11 @@
 package UtilityPackage;
-
 import java.util.regex.Pattern;
 
 public class Utils {
     public static boolean isPasswordValid(String password) {
         boolean haschar = false;
         boolean hasdigit = false;
-        for (char ch: password.toCharArray()) {
+        for (char ch : password.toCharArray()) {
             if (Character.isLetter(ch)) {
                 haschar = true;
             } else if (Character.isDigit(ch)) {
@@ -15,10 +14,11 @@ public class Utils {
         }
         return hasdigit && haschar;
     }
-    public static boolean isEmailValid(String email){
-        if(Pattern.matches("[^@ \\t\\r\\n]+@[^@ \\t\\r\\n]+\\.[^@ \\t\\r\\n]+",email)){
+
+    public static boolean isEmailValid(String email) {
+        if (Pattern.matches("[^@ \\t\\r\\n]+@[^@ \\t\\r\\n]+\\.[^@ \\t\\r\\n]+", email)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
