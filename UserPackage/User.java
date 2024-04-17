@@ -37,8 +37,10 @@ public class User {
     public void setPassword(String password) {
         if (Utils.isPasswordValid(password)) {
             this.Password = password;
+        } else {
+            System.out.println(" please enter valid password ");
+            setPassword( scanner.next() );
         }
-
     }
     public String getPassword() {
         return this.Password;
@@ -75,9 +77,9 @@ public class User {
             setFirstName(scanner.next());
         } else {
             char[] c = ln.toCharArray();
-            c[0] = Character.toLowerCase(c[0]);
+            c[0] = Character.toUpperCase(c[0]);
             for(int t=1;t<c.length;t++){
-                c[t] = Character.toUpperCase(c[t]);
+                c[t] = Character.toLowerCase(c[t]);
             }
             this.last_name = Arrays.toString(c);
         }
@@ -112,12 +114,21 @@ public class User {
         System.out.println("Can not found task");
         return null;
     }
-    public Task getTaskByColor(String taskColor){
-        for(Task task:task_list){
-            if(taskColor.equals(task.getColor())){
-                return task;
+    public Task[] getTaskByColor(String taskColor){
+
+        if ( !task_list.isEmpty()) {
+            Task[] task_holder = new Task[ task_list.size() ];
+            int index = 0;
+
+            for(Task task:task_list){
+                if(taskColor.equals(task.getColor())){
+                    task_holder[index] = task;
+                    index++;
+                }
             }
+            return task_holder;
         }
+
         System.out.println("Can not found task");
         return null;
     }
