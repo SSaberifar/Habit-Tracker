@@ -17,8 +17,7 @@ public class User {
     private String last_name;
     private String Email;
     public int Streak;
-    public String finalName = "";
-    public String finalLName = "";
+
 
     static ArrayList<Task> task_list = new ArrayList<>();
 
@@ -64,6 +63,7 @@ public class User {
     }
 
     public void setFirstName(String fn) {
+        String finalName ="";
         if (fn == null) {
             System.out.println(" first name can't be empty!");
             setFirstName(scanner.next());
@@ -84,6 +84,7 @@ public class User {
     }
 
     public void setLastName(String ln) {
+        String finalLName = "";
         if (ln == null) {
             System.out.println(" last name can't be empty!");
             setFirstName(scanner.next());
@@ -95,7 +96,7 @@ public class User {
                 c[t] = Character.toLowerCase(c[t]);
                 finalLName += c[t];
             }
-            this.last_name = finalName;
+            this.last_name = finalLName;
         }
     }
 
