@@ -1,7 +1,8 @@
-package UtilityPackage;
+package Utils;
+
 import java.util.regex.Pattern;
 
-public class Utils {
+public class Utility {
     public static boolean isPasswordValid(String password) {
         boolean haschar = false;
         boolean hasdigit = false;

@@ -1,45 +1,70 @@
-package UserPackage;
+package User;
 
-import TaskPackage.Task;
-import UtilityPackage.Utils;
+import Activity.Task;
+import Utils.Utility;
 
-import java.util.Arrays;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import Activity.ToDo;
 
 public class User {
 
     //variables
     Scanner scanner = new Scanner(System.in);
-    private String Username;
-    private String Password;
+    private String username;
+    private String password;
+    private int streak;
+    static ToDo[] tasks = new ToDo[10];
     private String first_name;
     private String last_name;
     private String Email;
-    public int Streak;
 
-
-    static ArrayList<Task> task_list = new ArrayList<>();
 
     //methods
-    public Task createTask(String task, User user, double st, double ft, String color) {
-        if (isTaskRepetitive(task)) {
+    public boolean isToDoRepetitive(String todo) {
+        for (ToDo obj : tasks) {
+            if (obj.name.equals(todo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void createTodo(String todo, User user, double st, double ft, String color) {
+        if (isToDoRepetitive(todo)) {
             System.out.print("Task name is Repetitious!");
-            return null;
         } else {
-            Task taskobj = new Task(task, user, st, ft, color);
-            task_list.add(taskobj);
-            return taskobj;
+            ToDo todoobj = new ToDo(todo, user, st, color);
+            for (ToDo toDo : tasks) {
+                if (toDo == null) {
+                    toDo = todoobj;
+                    break;
+                }
+            }
         }
     }
 
     public String getFullName() {
-        return this.first_name.concat(" ".concat(this.last_name));
+        return this.first_name + " " + this.last_name;
+    }
+
+    public ToDo[] getToDosByColor(String todoColor) {
+        ToDo[] todo_holder = new ToDo[10];
+        int i = 0;
+
+        for (ToDo todo : tasks) {
+            if (todoColor.equals(todo.getColor())) {
+                todo_holder[i] = todo;
+                i++;
+            }
+        }
+        return todo_holder;
     }
 
     public void setPassword(String password) {
-        if (Utils.isPasswordValid(password)) {
-            this.Password = password;
+        if (Utility.isPasswordValid(password)) {
+            this.password = password;
         } else {
             System.out.println("please enter valid password");
             setPassword(scanner.next());
@@ -47,23 +72,23 @@ public class User {
     }
 
     public String getPassword() {
-        return this.Password;
+        return this.password;
     }
 
     public void setUsername(String username) {
         if (username == null) {
             System.out.println(" Username can't be empty!");
         } else {
-            this.Username = username;
+            this.username = username;
         }
     }
 
     public String getUsername() {
-        return this.Username;
+        return this.username;
     }
 
     public void setFirstName(String fn) {
-        String finalName ="";
+        String finalName = "";
         if (fn == null) {
             System.out.println(" first name can't be empty!");
             setFirstName(scanner.next());
@@ -109,7 +134,7 @@ public class User {
             System.out.println(" Email can't be empty!");
             setLastName(scanner.next());
         } else {
-            if (Utils.isEmailValid(e)) {
+            if (Utility.isEmailValid(e)) {
                 this.Email = e;
             } else {
                 System.out.println("please enter valid email!");
@@ -122,38 +147,17 @@ public class User {
         return this.Email;
     }
 
-    public Task getTaskByName(String taskName) {
-        for (Task task : task_list) {
-            if (taskName.equals(task.getName())) {
-                return task;
-            }
-        }
-        System.out.println("Can not found task");
-        return null;
+    public int getStreak() {
+        return streak;
     }
 
-    public Task[] getTaskByColor(String taskColor) {
-
-        if (!task_list.isEmpty()) {
-            Task[] task_holder = new Task[task_list.size()];
-            int index = 0;
-
-            for (Task task : task_list) {
-                if (taskColor.equals(task.getColor())) {
-                    task_holder[index] = task;
-                    index++;
-                }
-            }
-            return task_holder;
-        }
-
-        System.out.println("Can not found task");
-        return null;
+    public void setStreak(int streak) {
+        this.streak = streak;
     }
 
     // Constructor
     public User(String username, String Pass, String fn, String ln, String email) {
-        this.Streak = 0;
+        setStreak(0);
         setPassword(Pass);
         setUsername(username);
         setFirstName(fn);
@@ -161,12 +165,10 @@ public class User {
         setEmail(email);
     }
 
-    private static boolean isTaskRepetitive(String task) {
-        for (Task obj : task_list) {
-            if (obj.name.equals(task)) {
-                return true;
-            }
-        }
-        return false;
+    public User(String username, String Pass) {
+        setStreak(0);
+        setPassword(Pass);
+        setUsername(username);
     }
+
 }
