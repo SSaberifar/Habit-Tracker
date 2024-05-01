@@ -3,6 +3,14 @@ package Activity;
 public class Task extends ToDo {
     private double finish_time;
 
+    public Task(double ft) {
+        setFinishTime(ft);
+    }
+
+    public Task() {
+
+    }
+
     public double getDuration() {
         return finish_time - start_time;
     }
@@ -21,14 +29,6 @@ public class Task extends ToDo {
 
     public double getFinish_time() {
         return finish_time;
-    }
-
-    public Task(double ft) {
-        setFinishTime(ft);
-    }
-
-    public Task() {
-
     }
 
     public String getInfo() {

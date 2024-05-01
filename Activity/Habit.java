@@ -4,10 +4,6 @@ public class Habit extends ToDo {
     private int frequency;
     private String category;
 
-    public String getInfo() {
-        return super.getInfo() + "frequency : " + getFrequency() + " category : " + getCategory();
-    }
-
     public Habit(int fre, String cat) {
         setCategory(cat);
         setFrequency(fre);
@@ -15,6 +11,10 @@ public class Habit extends ToDo {
 
     public Habit() {
 
+    }
+
+    public String getInfo() {
+        return super.getInfo() + "frequency : " + getFrequency() + " category : " + getCategory();
     }
 
     public int getFrequency() {
@@ -33,12 +33,4 @@ public class Habit extends ToDo {
         this.category = category;
     }
 
-    public void setStartTime(double St) {
-        if (St < 0) {
-            System.out.println("please enter valid number!");
-            setStartTime(scan.nextDouble());
-        } else {
-            this.start_time = St;
-        }
-    }
 }

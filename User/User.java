@@ -1,16 +1,10 @@
 package User;
-
-import Activity.Task;
 import Utils.Utility;
-
-import java.util.ArrayList;
 import java.util.Scanner;
-
 import Activity.ToDo;
 
 public class User {
 
-    //variables
     Scanner scanner = new Scanner(System.in);
     private String username;
     private String password;
@@ -20,8 +14,6 @@ public class User {
     private String last_name;
     private String Email;
 
-
-    //methods
     public boolean isToDoRepetitive(String todo) {
         for (ToDo obj : tasks) {
             if (obj.name.equals(todo)) {
@@ -88,19 +80,19 @@ public class User {
     }
 
     public void setFirstName(String fn) {
-        String finalName = "";
+        StringBuilder finalName = new StringBuilder();
         if (fn == null) {
             System.out.println(" first name can't be empty!");
             setFirstName(scanner.next());
         } else {
             char[] c = fn.toCharArray();
             c[0] = Character.toUpperCase(c[0]);
-            finalName += c[0];
+            finalName.append(c[0]);
             for (int t = 1; t < c.length; t++) {
                 c[t] = Character.toLowerCase(c[t]);
-                finalName += c[t];
+                finalName.append(c[t]);
             }
-            this.first_name = finalName;
+            this.first_name = finalName.toString();
         }
     }
 
@@ -109,19 +101,19 @@ public class User {
     }
 
     public void setLastName(String ln) {
-        String finalLName = "";
+        StringBuilder finalLName = new StringBuilder();
         if (ln == null) {
             System.out.println(" last name can't be empty!");
             setFirstName(scanner.next());
         } else {
             char[] c = ln.toCharArray();
             c[0] = Character.toUpperCase(c[0]);
-            finalLName += c[0];
+            finalLName.append(c[0]);
             for (int t = 1; t < c.length; t++) {
                 c[t] = Character.toLowerCase(c[t]);
-                finalLName += c[t];
+                finalLName.append(c[t]);
             }
-            this.last_name = finalLName;
+            this.last_name = finalLName.toString();
         }
     }
 
@@ -155,7 +147,6 @@ public class User {
         this.streak = streak;
     }
 
-    // Constructor
     public User(String username, String Pass, String fn, String ln, String email) {
         setStreak(0);
         setPassword(Pass);

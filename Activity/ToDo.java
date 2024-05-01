@@ -33,7 +33,7 @@ public class ToDo {
                 break;
             }
         }
-        if (sw == true) {
+        if (sw) {
             color = C;
         }
     }

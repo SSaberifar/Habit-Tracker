@@ -15,9 +15,9 @@ public class Application {
     public User[] getUserByName(String name) {
         User[] userContainer = new User[10];
         int i = 0;
-        for (int j = 0; j < users.size(); j++) {
-            if (users.get(j).getUsername().equals(name)) {
-                userContainer[i] = users.get(j);
+        for (User user : users) {
+            if (user.getUsername().equals(name)) {
+                userContainer[i] = user;
             }
         }
         return userContainer;
