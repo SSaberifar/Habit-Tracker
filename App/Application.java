@@ -17,7 +17,7 @@ public class Application {
         int i = 0;
         for (User user : users) {
             if (user.getUsername().equals(name)) {
-                userContainer[i] = user;
+                userContainer[i++] = user;
             }
         }
         return userContainer;
